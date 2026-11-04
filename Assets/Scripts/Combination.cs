@@ -1,12 +1,12 @@
 using UnityEngine;
 
-namespace Tiles {
+namespace Elements {
     public struct Combination
     {
-        public Tile[] tiles;
+        public Element[] tiles;
         public Bonus bonus;
 
-        public bool CheckTiles(Tile[] tiles) {
+        public bool CheckTiles(Element[] tiles) {
             if(tiles.Length != this.tiles.Length) return false;
 
             bool standard = true, reverse = true;

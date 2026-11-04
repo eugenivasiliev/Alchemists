@@ -1,11 +1,12 @@
 using UnityEngine;
-using Tiles;
+using Elements;
 using UnityEngine.InputSystem;
 
 public class BoardManager : MonoBehaviour
 {
     public Board board;
     public RecipeList recipeList;
+    public Hand hand;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,13 +26,13 @@ public class BoardManager : MonoBehaviour
         Vector2 mousePos = ctx.ReadValue<Vector2>();
 
         Vector3 clickPos = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.transform.position.y));
-        if(ctx.performed) Destroy(board.tileObjects[Mathf.FloorToInt(clickPos.x), Mathf.FloorToInt(clickPos.z)]);
+        if(ctx.performed && hand.SelectedTile is Element elem) board.SetTileAt(Mathf.FloorToInt(clickPos.x), Mathf.FloorToInt(clickPos.z), elem);
     }
 
-    public void RefreshBoard(int x, int y, Tile t) 
+    public void RefreshBoard(int x, int y, Element t) 
     {
         foreach(Combination c in recipeList.combinations) {
-            Tile[] tiles = {};
+            Element[] tiles = {};
             for(int i = -c.tiles.Length; i < 0; i++) {
                 if(board.GetTilesX(x + i + 1, y, c.tiles.Length, out tiles)) {
                     if(c.CheckTiles(tiles)) {

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Tiles
+namespace Elements
 {
-    public enum Tile 
+    public enum Element 
     {
         ELEMENT1,
         ELEMENT2,

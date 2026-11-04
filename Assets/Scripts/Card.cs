@@ -1,10 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Elements;
 
 public class Card : MonoBehaviour
 {
     public Button button;
+    public Image image;
+    public ElementsDB db;
+    private Element tile;
+    public Element Tile { 
+        get { return tile; }
+        set 
+        { 
+            tile = value;
+            image.sprite = db.Sprites[(int)tile];
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
