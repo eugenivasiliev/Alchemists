@@ -1,15 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Tiles;
+using Elements;
 
 public class Card : MonoBehaviour
 {
     public Button button;
     public Image image;
     public ElementsDB db;
-    private Tile tile;
-    public Tile Tile { 
+    private Element tile;
+    public Element Tile { 
         get { return tile; }
         set 
         { 
